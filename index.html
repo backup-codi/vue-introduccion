@@ -16,9 +16,17 @@
       <span v-else-if="changePercent < 0">👎🏽</span>
       <span v-else>🤞🏽</span>
 
-      <span v-show="changePercent > 0">👍🏽</span>
-      <span v-show="changePercent < 0">👎🏽</span>
-      <span v-show="changePercent === 0">🤞🏽</span>
+      <ul>
+        <li v-for="(p, i) in prices" :key="p">
+          {{ i }} - {{ p }}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="(p, i) in pricesWithDays" :key="p.day">
+          {{ i }} - {{p.day}} - {{ p.value }}
+        </li>
+      </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="app.js"></script>
