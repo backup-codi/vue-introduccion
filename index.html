@@ -10,19 +10,26 @@
   <body>
     <div id="app">
       <!-- <img v-bind:src="img" v-bind:alt="name" /> -->
-      <img :src="img" :alt="name" />
-      <h1>{{name}}</h1>
-      <span v-if="changePercent > 0">👍🏽</span>
-      <span v-else-if="changePercent < 0">👎🏽</span>
-      <span v-else>🤞🏽</span>
+      <img
+        v-on:mouseover="toggleShowPrices"
+        v-on:mouseout="toggleShowPrices"
+        :src="img"
+        :alt="name"
+      />
+      <h1>
+        {{name}}
 
-      <ul>
-        <li v-for="(p, i) in prices" :key="p">
-          {{ i }} - {{ p }}
-        </li>
-      </ul>
+        <span v-if="changePercent > 0">👍🏽</span>
+        <span v-else-if="changePercent < 0">👎🏽</span>
+        <span v-else>🤞🏽</span>
+      </h1>
 
-      <ul>
+      <!-- <span v-on:click="toggleShowPrices"> -->
+      <span @click="toggleShowPrices">
+        {{ showPrices ? '👀' : '🙅🏽‍♂️'}}
+      </span>
+
+      <ul v-show="showPrices">
         <li v-for="(p, i) in pricesWithDays" :key="p.day">
           {{ i }} - {{p.day}} - {{ p.value }}
         </li>
