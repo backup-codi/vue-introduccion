@@ -8,31 +8,26 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="app">
-      <!-- <img v-bind:src="img" v-bind:alt="name" /> -->
+    <div id="app" :style="{background: '#' + color}">
       <img
         v-on:mouseover="toggleShowPrices"
         v-on:mouseout="toggleShowPrices"
         :src="img"
         :alt="name"
       />
-      <!-- Utilizando un operador ternario asignamos la clase green si changePercent es mayor que cero y rojo si es contrario -->
       <h1 :class="changePercent > 0 ? 'green' : 'red'">
         {{name}}
 
         <span v-if="changePercent > 0">👍🏽</span>
         <span v-else-if="changePercent < 0">👎🏽</span>
         <span v-else>🤞🏽</span>
+
+        <span @click="toggleShowPrices">
+          {{ showPrices ? '👀' : '🙅🏽‍♂️'}}
+        </span>
       </h1>
 
-      <!-- <span v-on:click="toggleShowPrices"> -->
-      <span @click="toggleShowPrices">
-        {{ showPrices ? '👀' : '🙅🏽‍♂️'}}
-      </span>
-
       <ul v-show="showPrices">
-        <!-- En caso de que vayamos a comparar un objeto en el operador ternario utilizamos la siguiente manera -->
-        <!-- asignara la clase orange SI p.value es igual a price y asi sucesivamente para las demas condiciones -->
         <li
           class="uppercase"
           :class="{ orange: p.value === price, red: p.value < price, green: p.value > price}"
