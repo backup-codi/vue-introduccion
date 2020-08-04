@@ -16,7 +16,8 @@
         :src="img"
         :alt="name"
       />
-      <h1>
+      <!-- Utilizando un operador ternario asignamos la clase green si changePercent es mayor que cero y rojo si es contrario -->
+      <h1 :class="changePercent > 0 ? 'green' : 'red'">
         {{name}}
 
         <span v-if="changePercent > 0">👍🏽</span>
@@ -30,7 +31,14 @@
       </span>
 
       <ul v-show="showPrices">
-        <li v-for="(p, i) in pricesWithDays" :key="p.day">
+        <!-- En caso de que vayamos a comparar un objeto en el operador ternario utilizamos la siguiente manera -->
+        <!-- asignara la clase orange SI p.value es igual a price y asi sucesivamente para las demas condiciones -->
+        <li
+          class="uppercase"
+          :class="{ orange: p.value === price, red: p.value < price, green: p.value > price}"
+          v-for="(p, i) in pricesWithDays"
+          :key="p.day"
+        >
           {{ i }} - {{p.day}} - {{ p.value }}
         </li>
       </ul>
