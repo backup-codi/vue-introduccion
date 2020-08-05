@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tacked Course</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>Mis cursos en Platzi 🤓</h1>
+        <div class="container__cursos">
+          <div class="formulario">
+            <h3>Nuevo Curso y sus horas</h3>
+            <input
+              v-model="title"
+              class="input__course"
+              type="text"
+              placeholder="Nombre del curso"
+            />
+            <input v-model="time" class="input__time" type="number" />
+            <button @click="addCourse">Añadir Curso</button>
+            <span class="red" v-if="!isValid"
+              >Comprueba los datos ingresados</span
+            >
+          </div>
+          <div class="cursos">
+            <h3 :class="totalTime > 0 ? 'greenText' : 'orangeText'">
+              Lista de Cursos
+            </h3>
+            <p v-if="takenCourses.length === 0" class="red">
+              Aun no has realizado cursos 🥺
+            </p>
+            <ul v-else>
+              <li v-for="c in takenCourses" :key="takenCourses.title">
+                {{c.title}} por {{ c.time}} horas.
+              </li>
+            </ul>
+          </div>
+          <div class="count" :class="totalTime > 0 ? 'green' : 'orange'">
+            <span>Llevo</span>
+            <strong>{{totalTime}} hrs.</strong>
+            <span>Aprendiendo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
