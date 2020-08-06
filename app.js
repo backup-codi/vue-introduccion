@@ -31,6 +31,13 @@ Vue.component('coin-detail', {
       this.$emit('change-color', this.showPrices ? 'FF96C8' : '3D3D3D');
     },
   },
+  created() {
+    console.log('Created coin-detail...');
+  },
+
+  mounted() {
+    console.log('Mounted coin-detail...');
+  },
 
   template: `
     <div>
@@ -93,6 +100,14 @@ new Vue({
       },
       color: 'f4f4f4',
     };
+  },
+
+  created() {
+    console.log('Created...');
+  },
+
+  mounted() {
+    console.log('Mounted...');
   },
 
   methods: {
