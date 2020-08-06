@@ -9,7 +9,9 @@
   </head>
   <body>
     <div id="app" :style="{background: '#' + color}">
-      <coin-detail :coin="btc"></coin-detail>
+      <coin-detail @change-color="updateColor" :coin="btc"> </coin-detail>
+      <coin-detail @change-color="updateColor" :coin="btc"> </coin-detail>
+      <coin-detail @change-color="updateColor" :coin="btc"> </coin-detail>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="app.js"></script>
